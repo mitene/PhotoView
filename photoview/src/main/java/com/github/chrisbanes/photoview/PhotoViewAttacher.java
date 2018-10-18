@@ -349,15 +349,6 @@ public class PhotoViewAttacher implements View.OnTouchListener,
 
     @Override
     public boolean onTouch(View v, MotionEvent ev) {
-
-        if (mAdditionalOnTouchListener != null) {
-            if (mAdditionalOnTouchListener.onTouch(v, ev)) { //It consumed
-                return true;
-            } else {
-                //Continue
-            }
-        }
-
         boolean handled = false;
 
         if (mZoomEnabled && Util.hasDrawable((ImageView) v)) {
@@ -415,6 +406,9 @@ public class PhotoViewAttacher implements View.OnTouchListener,
                 handled = true;
             }
 
+            if (mAdditionalOnTouchListener != null && mAdditionalOnTouchListener.onTouch(v, ev)) {
+                handled = true;
+            }
         }
 
         return handled;
