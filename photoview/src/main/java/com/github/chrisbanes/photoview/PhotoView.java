@@ -257,7 +257,7 @@ public class PhotoView extends AppCompatImageView {
         attacher.setOnSingleFlingListener(onSingleFlingListener);
     }
 
-    public void setOnAdditionalOnTouchListener(AdditionalOnTouchListener onTouchListener) {
+    public void setOnAdditionalOnTouchListener(OnTouchListener onTouchListener) {
         attacher.setAdditionalOnTouchListener(onTouchListener);
     }
 }

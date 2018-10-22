@@ -92,7 +92,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
 
 
     //For adding our own onTouchListener
-    private AdditionalOnTouchListener mAdditionalOnTouchListener;
+    private View.OnTouchListener mAdditionalOnTouchListener;
 
     private OnGestureListener onGestureListener = new OnGestureListener() {
         @Override
@@ -335,7 +335,7 @@ public class PhotoViewAttacher implements View.OnTouchListener,
         return mScaleType;
     }
 
-    public void setAdditionalOnTouchListener (AdditionalOnTouchListener listener) {
+    public void setAdditionalOnTouchListener (View.OnTouchListener listener) {
         this.mAdditionalOnTouchListener = listener;
     }
 
