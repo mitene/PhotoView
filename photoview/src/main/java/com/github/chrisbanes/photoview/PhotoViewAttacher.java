@@ -90,6 +90,10 @@ public class PhotoViewAttacher implements View.OnTouchListener,
     private boolean mZoomEnabled = true;
     private ScaleType mScaleType = ScaleType.FIT_CENTER;
 
+
+    //For adding our own onTouchListener
+    private View.OnTouchListener mAdditionalOnTouchListener;
+
     private OnGestureListener onGestureListener = new OnGestureListener() {
         @Override
         public void onDrag(float dx, float dy) {
@@ -331,6 +335,10 @@ public class PhotoViewAttacher implements View.OnTouchListener,
         return mScaleType;
     }
 
+    public void setAdditionalOnTouchListener (View.OnTouchListener listener) {
+        this.mAdditionalOnTouchListener = listener;
+    }
+
     @Override
     public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
         // Update our base matrix, as the bounds have changed
@@ -398,6 +406,9 @@ public class PhotoViewAttacher implements View.OnTouchListener,
                 handled = true;
             }
 
+            if (mAdditionalOnTouchListener != null && mAdditionalOnTouchListener.onTouch(v, ev)) {
+                handled = true;
+            }
         }
 
         return handled;
